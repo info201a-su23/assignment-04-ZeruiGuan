@@ -11,16 +11,6 @@ Jail population primarily consists of individuals awaiting trial, while prison p
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
-
-These will likely be calculated using your DPLYR skills, answering questions such as: 
-
-- What is the average value of my variable across all the counties (in the current year)?
-- Where is my variable the highest / lowest?
-- How much has my variable change over the last N years?
-
-Feel free to calculate and report values that you find relevant. Again, remember that the purpose is to think about how these measure of incarceration vary by race.
-
 ``````{r setup, echo = FALSE, message = FALSE, warning = FALSE}
 source("summary.R")
 library(knitr)
