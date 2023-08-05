@@ -1,11 +1,13 @@
 ---
-title: "A3: Incarceration"
+title: "A4: Incarceration"
 output: html_document
 ---
 
 ### Introduction
 
 An introduction of the problem domain and a description of the variable(s) you are choosing to analyze (and why!)
+
+Jail population primarily consists of individuals awaiting trial, while prison population comprises individuals convicted of more serious crimes serving longer-term sentences. Analyzing jail and prison population trends can provide valuable insights into various aspects of the criminal justice system and societal challenges. In this assignment, I choose to analyze variables such as total jail/prison population over a time range, and jail/prison population Rate based on the geographical prospective. This analysis could be helpful since it attempts to provide valuable insights into the criminal justice system. 
 
 ### Summary Information
 
@@ -19,53 +21,111 @@ These will likely be calculated using your DPLYR skills, answering questions suc
 
 Feel free to calculate and report values that you find relevant. Again, remember that the purpose is to think about how these measure of incarceration vary by race.
 
-### The Dataset
-
-Who collected the data?  
-How was the data collected or generated?  
-Why was the data collected?  
-How many observations (rows) are in your data?  
-How many features (columns) are in the data?  
-What, if any, ethical questions or questions of power do you need to consider when working with this data?  
-What are possible limitations or problems with this data?   (at least 200 words)
-
-
-### Trends Over Time Chart
-
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The first chart that you will create and include will show the trend over time of your variable/topic. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - This may mean showing the same measure for different locations or different racial groups. Think carefully about a meaningful comparison of locations (e.g., the top 10 counties in a state, top 10 states, etc.)
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart1_example.R")}
+``````{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+source("summary.R")
+library(knitr)
+kable(prison_summary_table)
+kable(jail_summary_table)
 ```
 
-### Variable Comparison Chart
+Based on the data calculated from above table, here are the findings:
 
+Prison Dataset:
+
+Number of Rows: 153,811
+
+Number of Columns: 36
+
+Number of States: 51
+
+Highest Year with Highest Population: 2016
+
+State with Highest Population: California (CA)
+
+Lowest Year: 1970
+
+Increase Rate from 1970 - 2016: 11.63%
+
+Jail Dataset:
+
+Number of Rows: 153,811
+
+Number of Columns: 28
+
+Number of States: 51
+
+Highest Year with Highest Population: 2016
+
+State with Highest Population: California (CA)
+
+Lowest Year: 1970
+
+Increase Rate from 1970 - 2016: 3.35%
+
+The summary of the data on prison and jail populations in the United States reveals that both populations have increased over time, with the prison population experiencing a higher growth rate compared to the jail population. The state of California (CA) had the highest population in both prison and jail datasets in the year 2016.
+
+
+### The Dataset
+- Who collected the data?  
+
+The data were collected by the Vera Institute of Justice.
+
+- How was the data collected or generated? 
+
+This work employed two Bureau of Justice Statistics (BJS) data collections: the Census of Jails (COJ), which covers all jails and is conducted every five to eight years since 1970, and the Annual Survey of Jails (ASJ), which covers about one-third of jails-and includes nearly all of the largest jails-that has been conducted in non-census years since 1982.Additional data were drawn from the BJS National Corrections Reporting Program (NCRP).
+
+- Why was the data collected?
+
+The data was collected to inform the public dialogue and advance research. It was also gathered to guide changes to justice policy and practice on mass incarceration.The collector aimed  to build and create justice systems that ensure fairness, promote safety, and strengthen communities.
+
+- How many observations (rows) are in your data?
+
+There are 153,811 observations in this data.
+
+- How many features (columns) are in the data?
+
+There are 36 features in the prison data and 28 features in the jail data.
+
+- What are possible limitations or problems with this data? (at least 200 words)
+
+One of the main ethical questions to consider is the impact of data on the people it represents.
+The data reflects decisions made about individuals' lives and freedom.Thus,it's crucial to present the data accurately and thoughtfully.In addition,We should avoid reinforcing harmful stereotypes or biases.
+Given the racial disparities in the U.S. justice system, it's crucial to consider how this data might be used to either highlight or perpetuate these disparities.When analyzing and interpreting the data, it's essential to do so with an eye towards advocating for systemic change.
+
+What, if any, ethical questions or questions of power do you need to consider when working with this data?  
+The data's limitations arise primarily from the ASJ survey, which encompasses just a third of jails, focusing mainly on larger ones. This could overlook nuances from smaller jails. In addition, the reliance on the COJ, ASJ, and NCRP surveys introduces potential reporting biases. Furthermore,the dataset lacks individual inmate demographics, limiting analysis on incarceration disparities. This could lead to an oversimplified view of U.S. incarceration, missing key details for informed interventions.
+
+### Trends Over Time Chart
 Include a chart. Make sure to describe why you included the chart, and what patterns emerged
 
-The second chart that you will create and include will show how two different (continuous) variables are related to one another. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
+``````{r, echo = FALSE, code = readLines("chart1.R"), message = FALSE, warning = FALSE}
 
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- If you choose to add a color encoding (not required), you need a legend for your different color and a clear legend title
+```
+
+The bar chart illustrates how the total jail/prison population changes in US from 1999 to 2016, which may provide users with a clear and concise representation of population fluctuations and growth rates. From 1999 to 2008, the  total jail/prison population for America grew rapidly. However, between 2008 and 2016, the total jail/prison population in US decreased by a small portion. 
+
+Comparing the jail and prison population in each year, overall, it has a trend that the jail population is about half of prison population. This makes sense since prison population comprises individuals serving longer-term sentences, which explains why prison population is larger than the jail population.
+
+The reason for a two different trends in 1999-2008 and 2008-2016 may have to do with the economic circumstances. The rapid growth in the population from 1999 to 2008 could be linked to economic expansion and increased law enforcement efforts. Conversely, the decline from 2008 to 2016 might be associated with the economic recession, leading to reduced resources for law enforcement and criminal justice systems.
+
+### Variable Comparison Chart
+``````{r, echo = FALSE, message = FALSE, warning = FALSE}
+source("chart2.R")
+race_plot
+gender_plot
+```
+
+Understanding and addressing these racial and gender disparities is crucial for ensuring a fair and equitable criminal justice system.
+
+The bar chart illustrates the average jail population by race from 1970-2016, providing user with a clear representation of the jail population distribution among different racial groups. The data shows that the white population has the highest average jail population (~104), followed by black (~87) and Latinx (~37). The Asian/Pacific Islander (aapi) and native populations have relatively lower average jail populations of ~2 and ~3, respectively. Comparing the jail population among different racial groups, it is evident that there are significant disparities, with the white population having a substantially higher average jail population compared to other groups. 
+
+The bar chart on average jail population by gender reveals significant gender disparities in the jail system. The male jail population (~200) is notably higher compared to the female jail population (~29). This substantial difference suggests that males are more heavily represented in the jail system than females. 
 
 ### Map
+``````{r, echo = FALSE, message = FALSE, warning = FALSE}
+source("map.R")
+map
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+```
 
-The last chart that you will create and include will show how a variable is distributed geographically. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Your map needs a title
-- Your color scale needs a legend with a clear label
-- Use a map based coordinate system to set the aspect ratio of your map
-
+It illustrates how the average jail rate varies across states, offering a clear and concise representation of the differences in jail rates among different locations. The average jail rate per 100,000 population ranges from 171.00 in New Hampshire to 1193.76 in Utah. The variation in jail rates indicates that different states may have distinct criminal justice policies, law enforcement practices, and social factors contributing to their respective jail rates. The location of each state is retrieved from the Google Map API, which may not be accurate. Google's API also failed to get coordination for some states, which explains why there are missing data points on the map.
